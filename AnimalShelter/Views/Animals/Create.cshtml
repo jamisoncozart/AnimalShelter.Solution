@@ -10,7 +10,7 @@
     @Html.LabelFor(model => model.Name)
     @Html.TextBoxFor(model => model.Name)
     @Html.LabelFor(model => model.Type)
-    @Html.TextBoxFor(model => model.Type)
+    @Html.TextBoxFor(model => model.Type, new { @required = "true" })
     @Html.LabelFor(model => model.Gender)
     @Html.TextBoxFor(model => model.Gender)
     @Html.LabelFor(model => model.DateAdmitted)
