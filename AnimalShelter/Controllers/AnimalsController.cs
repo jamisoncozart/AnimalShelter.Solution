@@ -15,15 +15,10 @@ namespace AnimalShelter.Controllers
       _db = db;
     }
 
-    // // // Sort the Pet objects in the array by Pet.Age.
-    // IEnumerable<Animal> query =
-    //     animals.AsQueryable().OrderBy(animal => animal.Name);
-
-
     public ActionResult Index()
     {
       List<Animal> model = _db.Animals.ToList();
-      IEnumerable<Animal> query = model.AsQueryable().OrderBy(animal => animal.Name);
+      model.Sort((x, y) => string.Compare(x.Name, y.Name));
       return View(model);
     }
     public ActionResult Create()
