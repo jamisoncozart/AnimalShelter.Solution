@@ -55,6 +55,20 @@ namespace AnimalShelter.Controllers
         _db.SaveChanges();
         return RedirectToAction("Index");
     }
+    public ActionResult Delete(int id)
+    {
+      var thisAnimal = _db.Animals.FirstOrDefault(animals => animals.AnimalId == id);
+      return View(thisAnimal);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      var thisAnimal = _db.Animals.FirstOrDefault(animals => animals.AnimalId == id);
+      _db.Animals.Remove(thisAnimal);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
     // public ActionResult ShowSorted(string searchTerm)
     // {
     //   List<Animal> model = _db.Animals.ToList();
