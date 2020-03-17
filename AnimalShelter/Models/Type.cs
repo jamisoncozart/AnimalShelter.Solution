@@ -1,0 +1,4 @@
+namespace AnimalShelter.Models
+{
+
+}

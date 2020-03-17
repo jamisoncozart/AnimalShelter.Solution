@@ -14,9 +14,15 @@ namespace AnimalShelter.Controllers
       _db = db;
     }
 
+    // // Sort the Pet objects in the array by Pet.Age.
+    // IEnumerable<Animal> query =
+    //     animals.AsQueryable().OrderBy(animal => animal.Name);
+
+
     public ActionResult Index()
     {
       List<Animal> model = _db.Animals.ToList();
+      model.Sort((x, y) => string.Compare(x.Name, y.Name));
       return View(model);
     }
     public ActionResult Create()
@@ -35,5 +41,12 @@ namespace AnimalShelter.Controllers
       Animal thisAnimal = _db.Animals.FirstOrDefault(animals => animals.AnimalId == id);
       return View(thisAnimal);
     }
+
+    // public ActionResult ShowSorted(string searchTerm)
+    // {
+    //   List<Animal> model = _db.Animals.ToList();
+    //   List<Animal> sortedModel = model.OrderBy(animal => animal.Breed).ToList();
+    //   return SortedIndex(sortedModel);
+    // }
   }
 }
